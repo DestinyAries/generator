@@ -1,5 +1,5 @@
-# 微变动
-在 [MyBatis Generator (MBG)](https://github.com/mybatis/generator) 源代码基础上进行的扩展，且仅支持Mybatis3，不支持ibatis2。小女子能力有限，若有不足望请谅解并指出，谢谢。
+# 微改动描述
+此改动是在 [MyBatis Generator (MBG)](https://github.com/mybatis/generator) 源代码基础上进行的扩展，且仅支持Mybatis3，不支持ibatis2。小女子能力有限，若有不足望请谅解并指出，谢谢。
 
 # 功能
 1. 添加 suppressDefaultComments 属性，去除默认生成的 Mybatis 注释，但可生成数据库表字段 comment 的注释 
