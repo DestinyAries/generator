@@ -86,6 +86,15 @@ public interface Rules {
     boolean generateUpdateByPrimaryKeySelective();
 
     /**
+     * Implements the rule for generating the update by map SQL Map element and
+     * DAO method. If the table has a map as well as other fields, and the
+     * updateByMap statement is allowed, then generate the element and method.
+     *
+     * @return true if the element and method should be generated
+     */
+    boolean generateUpdateByMap();
+
+    /**
      * Implements the rule for generating the delete by primary key SQL Map
      * element and DAO method. If the table has a primary key, and the
      * deleteByPrimaryKey statement is allowed, then generate the element and
@@ -165,6 +174,22 @@ public interface Rules {
     boolean generateBlobColumnList();
 
     /**
+     * Implements the rule for generating the where clause by map element.
+     * Generate the element if any of the where methods are enabled.
+     *
+     * @return true if the element should be generated
+     */
+    boolean generateByMapWhereClause();
+
+    /**
+     * Implements the rule for generating the set clause by map element.
+     * Generate the element if any of the set methods are enabled.
+     *
+     * @return true if the element should be generated
+     */
+    boolean generateByMapSetClause();
+
+    /**
      * Implements the rule for generating the select by primary key SQL Map
      * element and DAO method. If the table has a primary key as well as other
      * fields, and the selectByPrimaryKey statement is allowed, then generate
@@ -173,6 +198,16 @@ public interface Rules {
      * @return true if the element and method should be generated
      */
     boolean generateSelectByPrimaryKey();
+
+    /**
+     * Implements the rule for generating the select by map SQL Map element
+     * and DAO method. If the table has a map as well as other fields, and
+     * the selectByMap statement is allowed, then generate the element and
+     * method.
+     *
+     * @return true if the element and method should be generated
+     */
+    boolean generateSelectByMap();
 
     /**
      * Implements the rule for generating the select by example without BLOBs

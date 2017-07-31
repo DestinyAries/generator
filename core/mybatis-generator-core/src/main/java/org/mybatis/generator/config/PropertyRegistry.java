@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -67,5 +67,6 @@ public class PropertyRegistry {
     public static final String COMMENT_GENERATOR_SUPPRESS_DATE = "suppressDate"; //$NON-NLS-1$
     public static final String COMMENT_GENERATOR_SUPPRESS_ALL_COMMENTS = "suppressAllComments"; //$NON-NLS-1$
     public static final String COMMENT_GENERATOR_ADD_REMARK_COMMENTS = "addRemarkComments"; //$NON-NLS-1$
+    public static final String COMMENT_GENERATOR_SUPPRESS_DEFAULT_COMMENTS = "suppressDefaultComments"; //$NON-NLS-1$
     public static final String COMMENT_GENERATOR_DATE_FORMAT = "dateFormat"; //$NON-NLS-1$
 }

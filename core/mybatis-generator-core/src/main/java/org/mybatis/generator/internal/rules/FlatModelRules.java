@@ -37,6 +37,46 @@ public class FlatModelRules extends BaseRules {
     }
 
     /**
+     * We always generate a select by map SQL Map element in the conditional model.
+     *
+     * @return true if the select by map SQL Map element should be generated
+     */
+    @Override
+    public boolean generateSelectByMap() {
+        return true;
+    }
+
+    /**
+     * We always generate a update by map SQL Map element in the conditional model.
+     *
+     * @return true if the select by map SQL Map element should be generated
+     */
+    @Override
+    public boolean generateUpdateByMap() {
+        return true;
+    }
+
+    /**
+     * We always generate a where clause by map element in the conditional model.
+     *
+     * @return true if the where clause by map element should be generated
+     */
+    @Override
+    public boolean generateByMapWhereClause() {
+        return true;
+    }
+
+    /**
+     * We always generate a set clause by map element in the conditional model.
+     *
+     * @return true if the set clause by map element should be generated
+     */
+    @Override
+    public boolean generateByMapSetClause() {
+        return true;
+    }
+
+    /**
      * We never generate a primary key in the flat model.
      * 
      * @return true if the primary key should be generated

@@ -15,21 +15,21 @@
  */
 package org.mybatis.generator.codegen.mybatis3.xmlmapper.elements;
 
-import org.mybatis.generator.api.IntrospectedColumn;
+import java.util.Map;
+
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
-import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
 /**
  * 
- * @author Jeff Butler
+ * @author linwanrong
  * 
  */
-public class UpdateByPrimaryKeySelectiveElementGenerator extends
+public class UpdateByMapElementGenerator extends
         AbstractXmlElementGenerator {
 
-    public UpdateByPrimaryKeySelectiveElementGenerator() {
+    public UpdateByMapElementGenerator() {
         super();
     }
 
@@ -38,18 +38,10 @@ public class UpdateByPrimaryKeySelectiveElementGenerator extends
         XmlElement answer = new XmlElement("update"); //$NON-NLS-1$
 
         answer.addAttribute(new Attribute(
-                "id", introspectedTable.getUpdateByPrimaryKeySelectiveStatementId())); //$NON-NLS-1$
-
-        String parameterType;
-
-        if (introspectedTable.getRules().generateRecordWithBLOBsClass()) {
-            parameterType = introspectedTable.getRecordWithBLOBsType();
-        } else {
-            parameterType = introspectedTable.getBaseRecordType();
-        }
+                "id", introspectedTable.getUpdateByMapStatementId())); //$NON-NLS-1$
 
         answer.addAttribute(new Attribute("parameterType", //$NON-NLS-1$
-                parameterType));
+                Map.class.getName()));
 
         context.getCommentGenerator().addComment(answer);
 
@@ -59,30 +51,14 @@ public class UpdateByPrimaryKeySelectiveElementGenerator extends
         sb.append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
         answer.addElement(new TextElement(sb.toString()));
 
-        answer.addElement(getByMapSetClauseElement());
-        sb.setLength(0);
-
-        boolean and = false;
-        for (IntrospectedColumn introspectedColumn : introspectedTable
-                .getPrimaryKeyColumns()) {
-            sb.setLength(0);
-            if (and) {
-                sb.append("  and "); //$NON-NLS-1$
-            } else {
-                sb.append("where "); //$NON-NLS-1$
-                and = true;
-            }
-
-            sb.append(MyBatis3FormattingUtilities
-                    .getEscapedColumnName(introspectedColumn));
-            sb.append(" = "); //$NON-NLS-1$
-            sb.append(MyBatis3FormattingUtilities
-                    .getParameterClause(introspectedColumn));
-            answer.addElement(new TextElement(sb.toString()));
-        }
+        XmlElement ifElement = new XmlElement("if"); //$NON-NLS-1$
+        ifElement.addAttribute(new Attribute("test", "_parameter != null")); //$NON-NLS-1$ //$NON-NLS-2$
+        ifElement.addElement(getByMapSetClauseElement());
+        ifElement.addElement(getByMapWhereClauseIncludeElement());
+        answer.addElement(ifElement);
 
         if (context.getPlugins()
-                .sqlMapUpdateByPrimaryKeySelectiveElementGenerated(answer,
+                .sqlMapSelectByPrimaryKeyElementGenerated(answer,
                         introspectedTable)) {
             parentElement.addElement(answer);
         }

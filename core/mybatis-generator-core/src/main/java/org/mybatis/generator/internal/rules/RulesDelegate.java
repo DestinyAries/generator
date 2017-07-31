@@ -140,6 +140,11 @@ public class RulesDelegate implements Rules {
     }
 
     @Override
+    public boolean generateSelectByMap() {
+        return rules.generateSelectByMap();
+    }
+
+    @Override
     public boolean generateSQLExampleWhereClause() {
         return rules.generateSQLExampleWhereClause();
     }
@@ -180,6 +185,11 @@ public class RulesDelegate implements Rules {
     }
 
     @Override
+    public boolean generateUpdateByMap() {
+        return rules.generateUpdateByMap();
+    }
+
+    @Override
     public IntrospectedTable getIntrospectedTable() {
         return rules.getIntrospectedTable();
     }
@@ -192,6 +202,16 @@ public class RulesDelegate implements Rules {
     @Override
     public boolean generateBlobColumnList() {
         return rules.generateBlobColumnList();
+    }
+
+    @Override
+    public boolean generateByMapWhereClause() {
+        return rules.generateByMapWhereClause();
+    }
+
+    @Override
+    public boolean generateByMapSetClause() {
+        return rules.generateByMapSetClause();
     }
 
     @Override
