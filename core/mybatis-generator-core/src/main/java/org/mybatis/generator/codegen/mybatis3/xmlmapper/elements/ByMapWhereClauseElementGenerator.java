@@ -48,7 +48,7 @@ public class ByMapWhereClauseElementGenerator extends AbstractXmlElementGenerato
         StringBuilder sb = new StringBuilder();
 
         for (IntrospectedColumn introspectedColumn : ListUtilities.removeGeneratedAlwaysColumns(introspectedTable
-                .getNonPrimaryKeyColumns())) {
+                .getAllColumns())) {
             String property = introspectedColumn.getJavaProperty();
             String equalClausePropertyName = new StringBuffer("eq")
                     .append(property.substring(0, 1).toUpperCase())
