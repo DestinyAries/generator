@@ -12,3 +12,6 @@ MyBatis Generator (MBG)
 Code generator for MyBatis and iBATIS.
 
 It will generate code for all versions of MyBatis, and versions of iBATIS after version 2.2.0. It will introspect a database table (or many tables) and will generate artifacts that can be used to access the table(s). This lessens the initial nuisance of setting up objects and configuration files to interact with database tables. MBG seeks to make a major impact on the large percentage of database operations that are simple CRUD (Create, Retrieve, Update, Delete).
+
+[扩展说明-中文](https://github.com/DestinyAries/generator/blob/master/DESTINYARIES_CHANGES_CN.md)
+[Extension Instructions - English](https://github.com/DestinyAries/generator/blob/master/DESTINYARIES_CHANGES_EN.md)
